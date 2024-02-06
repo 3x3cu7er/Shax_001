@@ -1,0 +1,125 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'homestyle.css'%}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="chatlists">
+                <div class="user">
+                    <div class="profile"></div>
+                    <div class="details">
+                        <h3>
+                            <h3>
+                                Handle {
+                                <span id="handle">`Sino`</span>
+                                }
+                            </h3>
+                        </h3>
+                        <hr>
+                        
+                        <h4 id="address">
+                            Purpose {
+                            <span> discussion</span>
+                            }
+                        </h4>
+                        <hr>
+                        <h4>
+                            Participants{
+                            <span> Parents and Students</span>
+                            }
+                        </h4>
+                        <hr>
+                    </div>
+                </div>
+                <hr id="line">
+                <div class="list">
+                    
+                        
+                        
+                           {%for std in students%}
+                           <div class="incoming">
+                           <div class="icon"></div>
+                           <li><div class="content">{{std}}</div></li>
+                           <div class="numOfMsg">{{std.recordID}}</div>
+
+                           </div>
+                    <hr>
+                           {%endfor%}
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            <div class="platform">
+                <div class="chatdisplay">
+                    <div class="userInfo">
+                        <div class="icon"></div>
+                        <h3 id="ActiveUser">The `sino` board contains list of all MEMBERS.</h3>
+                        <h5 id="timer">
+                            You can get help from others by cross-checking their cwa :
+                        </h5>
+                        <h5 class="status">
+                            Go back to 
+                            <span id="sec"> <a href="{% url 'landing'%}">home</a></span>
+                            
+                        </h5>
+                        
+                        </div>
+                        <div class="settings">
+                            <a href="" class="change" id="wallpaper">change</a>
+                            <input type="file" placeholder="wallpaper" class="wallpaper">
+                        </div>
+                        <h1>Messages</h1><hr>
+                            {%for msg in messages%}
+                <li><div class="from">
+                    <div class="msg">{{msg}}</div>
+                    <div class="reply">
+                        <form action="" method="get">
+                            {% csrf_token%}
+                            <textarea id="type"name="reply" placeholder="Post request.."">
+                                
+                                </textarea>
+                                <input type="submit" class="send" value="">
+                        </form>
+                    </div>
+                </div></li>
+                {%endfor%}
+                
+                <div class="left"><h1 >Replies</h1><hr></div>
+                {%for rpl in replies%}
+                <li><div class="to">
+                    <div class="msg">{{rpl}}</div></div>
+                </li>
+                {%endfor%}
+                
+                        
+                    </div>
+                    <div class="top">
+                        
+                        <div class="display">
+                            
+                            <div class="text">
+                                <form action="" method="post">
+                                    {% csrf_token%}
+                                    <textarea id="type"name="request" placeholder="Post request.."">
+                                
+                                </textarea>
+                                <input type="submit" value="" class="send" id="sending">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'home.js'%}"></script>
+</body>
+</html>

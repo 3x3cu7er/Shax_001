@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>...</title>
+    <link rel="stylesheet" href="{% static '/css/parent.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- navigation system -->
+      <div class="nav">
+        <div class="logo">Monitoring -Board.</div>
+        <div class="links">
+          <a href="{% url 'landing'%}">Home</a>
+          <a href="#CARD">CARD</a>
+        </div>
+      </div>
+      <div class="elements">
+        <a href="{% url 'main'%}" class="under">Home</a>
+        <a href="{% url 'records'%}">Records</a>
+        <a href="{% url 'update'%}">Update</a>
+        <a href="#later">Alerts</a>
+      </div>
+      <!-- platforms -->
+      <div class="platforms">
+        <h2>Access <span> Student Records </span> be stored here.</h2>
+        <div class="section">
+          <div class="formContainer">
+            <h1>Search student Performance..</h1>
+            <div class="search">
+              <form action="" method="get">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  placeholder="Student's  ID.."
+                  name="search"
+                  id="search"
+                />
+                <input type="submit" value="Check" name="searchBtn" id="btn" />
+              </form>
+            </div>
+          </div>
+          <div class="formContainer2" id="CARD">
+            <div class="id">
+              <h1>R e s u l t..</h1>
+            </div>
+            <div class="id">
+              <h2>Student Username : <span>{{usRefname}}</span></h2>
+            </div>
+            <div class="id">
+              <h2>Student RefNumber : <span>{{ref}}</span></h2>
+            </div>
+
+            <div class="id">
+              <h2>Academic Status : <span>{{status}}</span></h2>
+            </div>
+            <div class="id">
+              <h2>Cumulative Weighted Average (CWA) : <span>{{cwa}}</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

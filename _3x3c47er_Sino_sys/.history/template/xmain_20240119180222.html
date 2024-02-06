@@ -1,0 +1,702 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>...</title>
+    <link rel="stylesheet" href="{% static '/css/xmain.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- navigation system -->
+      <div class="nav">
+        <div class="logo">
+          <h5>Academic Performance-dashboard</h5>
+          <a class="loc">show menu</a>
+        </div>
+
+        <div class="links">
+          <a href="{% url 'xlanding'%}" class="under">Home</a>
+          <a href="{% url 'temp_access_student'%}">Records</a>
+          <a href="{% url 'xupdate'%}">Update</a>
+          <a href="#later">Chart</a>
+        </div>
+      </div>
+      <div class="elements">
+        <a href="{% url 'xlanding'%}" class="under">Home</a>
+        <a href="{% url 'temp_access_student'%}">Records</a>
+        <a href="{% url 'xupdate'%}">Update</a>
+        <a href="#later">Alerts</a>
+      </div>
+      <!-- platforms -->
+      <div class="label">
+        <h1>
+          <p>System content :</p>
+        </h1>
+      </div>
+
+      <div class="platforms">
+        <!-- top section -->
+
+        <div class="section" class="elements">
+          <!-- right -->
+          <div class="rigthSide">
+            <div class="flex">
+              <h4>Diagrams.</h4>
+              <div class="data">
+                <div class="graph">
+                  <canvas id="net"></canvas>
+                  <h4>Bar-chart representation</h4>
+                </div>
+              </div>
+              <div class="data">
+                <canvas id="tracking"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- middle -->
+          <div class="middleContent">
+            <div class="data" id="top">
+              <div class="graph">
+                <canvas id="pie"></canvas>
+              </div>
+            </div>
+            <div class="data" id="bottom">
+              <div class="graph">
+                <canvas id="scatter"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- left -->
+
+          <div class="leftSide">
+            <div class="time">
+              <h4>
+                <span class="hr">00</span>:<span class="min">00</span>:<span
+                  class="sec"
+                  >00</span
+                >
+              </h4>
+              <br />
+
+              <h4 class="dy">[day]</h4>
+            </div>
+            <div class="data" id="comments">
+              <h4>Comments Added.</h4>
+              <hr />
+
+              {% for content in comment%}
+              <li class="id">
+                <ol>
+                  <div class="sub">{{content}}</div>
+                </ol>
+              </li>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+        <div class="context">
+          <div class="subCOntext">
+            <div class="scroll">
+              <!-- {% for item in sh%}
+              <ul>
+                {{item}}
+              </ul>
+              <br /><br />
+              {%endfor%} -->
+              <div class="part">
+                <img src="/static/css/icons/spy.svg" alt="" />
+                <h3>User -Summary.</h3>
+
+                <hr />
+                <h4>Total datasets : <span>{{tcourse}}</span></h4>
+                <h4>
+                  The plt<sub>id</sub> corresponds to the recordID in the corses
+                  undertaken.
+                </h4>
+                <h4>
+                  plt -<sup>-</sup>-<sub>-</sub> average performance for the
+                  record.
+                </h4>
+              </div>
+              <!-- <div class="part">
+                <img src="/static/undraw_emails_re_cqen.svg" alt="" />
+                <h3>Notification.</h3>
+                <hr />
+              </div> -->
+              <div class="part">
+                <img src="/static/css/icons/chart.svg" alt="" />
+                <h3>Performance -Summary.</h3>
+                <hr />
+                <h4>Total score : <span>{{tcwa}}</span></h4>
+                <h4>Your status : <span>{{com}}</span></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design">
+          <div class="">
+            <img src="/static/css/icons/academic.svg" alt="" />
+            <h1>Records.</h1>
+          </div>
+          <div class="">
+            <img src="/static/css/icons/main2.svg" alt="" />
+            <h1>Predictions.</h1>
+          </div>
+        </div>
+        <!-- student details -->
+        <div class="section" id="details">
+          <div class="details">
+            <h4>Courses Undertaken</h4>
+            <hr />
+            <div class="table">
+              <div class="thead">
+                <div class="name">Record-ID</div>
+                <div class="name">Course</div>
+                <div class="name">Refrence</div>
+                <div class="name">CWA</div>
+              </div>
+
+              {%for rec in record%}
+              <div class="value">
+                <h5>{{rec.recordID}}</h5>
+                <h5>{{rec.course}}</h5>
+                <h5>{{rec.reference}}</h5>
+                <h5>{{rec.cwa}}</h5>
+              </div>
+              {%endfor%}
+
+              <!-- <div class="all">
+                
+                <li>{{rec.semester}}</li>
+                
+              </div> -->
+            </div>
+          </div>
+          <div class="details">
+            <h4>Predictions for the student.</h4>
+            <hr />
+
+            <div class="prediction">
+              <h5>{{predicted_score}}</h5>
+              <h5>Total AVERAGE score :{{average}}<span>%</span>.</h5>
+
+              <h5>Student would have :{{recommendation}} performance.</h5>
+            </div>
+            <!-- <div class="form">
+              <h2>Comment Form</h2>
+              <hr />
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="formItem">
+                  <label for="">Content ID :</label>
+                  <input type="text" name="comID" placeholder="I D.." />
+                </div>
+                <div class="formItem">
+                  <label for="">Label:</label>
+                  <input type="text" name="label" placeholder="give label.." />
+                </div>
+                <div class="formItem">
+                  <label for="">Main content :</label>
+                  <textarea
+                    name="message"
+                    placeholder="Write to add to content."
+                    id="writings"
+                  ></textarea>
+                </div>
+                <div class="formItem">
+                  <input type="submit" value="Add content" />
+                </div>
+              </form>
+            </div> -->
+          </div>
+        </div>
+        <!-- later -->
+        <!-- <div class="search">
+          <form action="" method="get">
+            {% csrf_token %}
+            <input
+              type="text"
+              placeholder="level.."
+              name="request"
+              id="search"
+            />
+            <input
+              type="text"
+              placeholder="semester.."
+              name="semReq"
+              id="search"
+            />
+            <input type="submit" value="Check" name="searchBtn" id="btn" />
+          </form>
+        </div> -->
+        <div class="formContainer">
+          <h1>Enter your user ID..</h1>
+          <div class="search">
+            <form action="" method="get">
+              {% csrf_token %}
+              <input
+                type="text"
+                placeholder="Student's  ID.."
+                name="search"
+                id="search"
+              />
+              <input type="submit" value="Check" name="searchBtn" id="btn" />
+            </form>
+          </div>
+        </div>
+        <div class="design">
+          <div class="">
+            <img src="/static/css/icons/analytics.svg" alt="" />
+            <h1>Performance tracking.</h1>
+            <hr />
+          </div>
+        </div>
+        <div class="section" id="later">
+          <!-- graph page -->
+          <div class="graph">
+            <canvas id="dataRep"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static '/js/time1.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("dataRep");
+      const pie = document.getElementById("pie");
+      const scatter = document.getElementById("scatter");
+      const tracking = document.getElementById("tracking");
+      const net = document.getElementById("net");
+      //pl1 = JSON.parse("{{pl1|escapejs}}");
+      //pl2 = JSON.parse("{{fs2|escapejs}}");
+      //ss1 = JSON.parse("{{ss1|escapejs}}");
+      //ss2 = JSON.parse("{{ss2|escapejs}}");
+      //ts1 = JSON.parse("{{ts1|escapejs}}");
+      //ts2 = JSON.parse("{{ts2|escapejs}}");
+      //fors1 = JSON.parse("{{fors1|escapejs}}");
+      //fors2 = JSON.parse("{{fors2|escapejs}}");
+      graphData = JSON.parse("{{graphData|escapejs}}");
+      graphData1 = JSON.parse("{{graphData1|escapejs}}");
+      const loca = document.querySelector(".loc");
+      const elements = document.querySelector(".elements");
+
+      // ########################
+      loca.addEventListener("click", function () {
+        elements.style.display = "block";
+      });
+
+      //line chart
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "plt1",
+            "plt2",
+            "plt3",
+            "plt4",
+            "plt5",
+            "plt6",
+            "plt7",
+            "plt8",
+            "plt9",
+            "plt10",
+            "plt11",
+            "plt12",
+            "plt13",
+            "plt14",
+            "plt15",
+            "plt16",
+            "plt17",
+            "plt18",
+            "plt19",
+            "plt20",
+            "plt21",
+            "plt22",
+            "plt23",
+            "plt24",
+            "plt25",
+            "plt26",
+            "plt27",
+            "plt28",
+            "plt29",
+            "plt30",
+            "plt31",
+            "plt32",
+            "plt33",
+            "plt34",
+            "plt35",
+            "plt36",
+            "plt37",
+            "plt38",
+            "plt39",
+            "plt40",
+            "plt41",
+            "plt42",
+            "plt43",
+            "plt44",
+            "plt45",
+            "plt46",
+            "plt47",
+            "plt48",
+            "plt49",
+            "plt50",
+            "plt51",
+            "plt52",
+            "plt53",
+            "plt54",
+            "plt55",
+            "plt56",
+            "plt57",
+            "plt58",
+            "plt59",
+            "plt60",
+          ],
+          datasets: [
+            {
+              label: "Performance rate.",
+              data: graphData,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      //net chart
+      new Chart(net, {
+        type: "bar",
+        data: {
+          labels: [
+            "plt1",
+            "plt2",
+            "plt3",
+            "plt4",
+            "plt5",
+            "plt6",
+            "plt7",
+            "plt8",
+            "plt9",
+            "plt10",
+            "plt11",
+            "plt12",
+            "plt13",
+            "plt14",
+            "plt15",
+            "plt16",
+            "plt17",
+            "plt18",
+            "plt19",
+            "plt20",
+            "plt21",
+            "plt22",
+            "plt23",
+            "plt24",
+            "plt25",
+            "plt26",
+            "plt27",
+            "plt28",
+            "plt29",
+            "plt30",
+            "plt31",
+            "plt32",
+            "plt33",
+            "plt34",
+            "plt35",
+            "plt36",
+            "plt37",
+            "plt38",
+            "plt39",
+            "plt40",
+            "plt41",
+            "plt42",
+            "plt43",
+            "plt44",
+            "plt45",
+            "plt46",
+            "plt47",
+            "plt48",
+            "plt49",
+            "plt50",
+            "plt51",
+            "plt52",
+            "plt53",
+            "plt54",
+            "plt55",
+            "plt56",
+            "plt57",
+            "plt58",
+            "plt59",
+            "plt60",
+          ],
+          datasets: [
+            {
+              label: "Performance rate.",
+              data: graphData,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      //tracking chart
+      new Chart(tracking, {
+        type: "polarArea",
+        data: {
+          labels: [
+            "plt1",
+            "plt2",
+            "plt3",
+            "plt4",
+            "plt5",
+            "plt6",
+            "plt7",
+            "plt8",
+            "plt9",
+            "plt10",
+            "plt11",
+            "plt12",
+            "plt13",
+            "plt14",
+            "plt15",
+            "plt16",
+            "plt17",
+            "plt18",
+            "plt19",
+            "plt20",
+            "plt21",
+            "plt22",
+            "plt23",
+            "plt24",
+            "plt25",
+            "plt26",
+            "plt27",
+            "plt28",
+            "plt29",
+            "plt30",
+            "plt31",
+            "plt32",
+            "plt33",
+            "plt34",
+            "plt35",
+            "plt36",
+            "plt37",
+            "plt38",
+            "plt39",
+            "plt40",
+            "plt41",
+            "plt42",
+            "plt43",
+            "plt44",
+            "plt45",
+            "plt46",
+            "plt47",
+            "plt48",
+            "plt49",
+            "plt50",
+            "plt51",
+            "plt52",
+            "plt53",
+            "plt54",
+            "plt55",
+            "plt56",
+            "plt57",
+            "plt58",
+            "plt59",
+            "plt60",
+          ],
+          datasets: [
+            {
+              label: "Tracking",
+              data: graphData,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      //pie
+      new Chart(pie, {
+        type: "doughnut",
+        data: {
+          labels: [
+            "plt1",
+            "plt2",
+            "plt3",
+            "plt4",
+            "plt5",
+            "plt6",
+            "plt7",
+            "plt8",
+            "plt9",
+            "plt10",
+            "plt11",
+            "plt12",
+            "plt13",
+            "plt14",
+            "plt15",
+            "plt16",
+            "plt17",
+            "plt18",
+            "plt19",
+            "plt20",
+            "plt21",
+            "plt22",
+            "plt23",
+            "plt24",
+            "plt25",
+            "plt26",
+            "plt27",
+            "plt28",
+            "plt29",
+            "plt30",
+            "plt31",
+            "plt32",
+            "plt33",
+            "plt34",
+            "plt35",
+            "plt36",
+            "plt37",
+            "plt38",
+            "plt39",
+            "plt40",
+            "plt41",
+            "plt42",
+            "plt43",
+            "plt44",
+            "plt45",
+            "plt46",
+            "plt47",
+            "plt48",
+            "plt49",
+            "plt50",
+            "plt51",
+            "plt52",
+            "plt53",
+            "plt54",
+            "plt55",
+            "plt56",
+            "plt57",
+            "plt58",
+            "plt59",
+            "plt60",
+          ],
+          datasets: [
+            {
+              label: "Oval display.",
+              data: graphData,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      //scatter plot
+      new Chart(scatter, {
+        type: "scatter",
+        data: {
+          labels: [
+            "plt1",
+            "plt2",
+            "plt3",
+            "plt4",
+            "plt5",
+            "plt6",
+            "plt7",
+            "plt8",
+            "plt9",
+            "plt10",
+            "plt11",
+            "plt12",
+            "plt13",
+            "plt14",
+            "plt15",
+            "plt16",
+            "plt17",
+            "plt18",
+            "plt19",
+            "plt20",
+            "plt21",
+            "plt22",
+            "plt23",
+            "plt24",
+            "plt25",
+            "plt26",
+            "plt27",
+            "plt28",
+            "plt29",
+            "plt30",
+            "plt31",
+            "plt32",
+            "plt33",
+            "plt34",
+            "plt35",
+            "plt36",
+            "plt37",
+            "plt38",
+            "plt39",
+            "plt40",
+            "plt41",
+            "plt42",
+            "plt43",
+            "plt44",
+            "plt45",
+            "plt46",
+            "plt47",
+            "plt48",
+            "plt49",
+            "plt50",
+            "plt51",
+            "plt52",
+            "plt53",
+            "plt54",
+            "plt55",
+            "plt56",
+            "plt57",
+            "plt58",
+            "plt59",
+            "plt60",
+          ],
+          datasets: [
+            {
+              label: "Scattered display.",
+              data: graphData,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

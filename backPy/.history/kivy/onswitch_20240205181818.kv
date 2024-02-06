@@ -1,0 +1,49 @@
+<MainWindow>:
+    GridLayout: 
+        cols:1
+        size:1000,700
+        width:"100dp"
+        background:"#00ffce"
+        Label:
+            text:"Switch "
+            font_size:30
+            color:"#00ffce"
+       
+        
+        Switch:
+            id:awake
+            width:"100dp"
+            on_active:root.active(self)
+        Slider:
+            id:varr
+            min:0
+            max:100
+            on_value:root.varr(self)
+            value:50
+            disabled:not awake.active
+        Label:
+            text:str(int(varr.value))
+
+<BLayouts>:
+    StackLayout:
+        padding:.5,.5
+        cols:1
+        size:400,500
+        BoxLayout:
+            Button:
+                text:"2"
+             Button:
+                text:"2"
+
+<Scroll@ScrollView>:
+    BLayouts:
+        size_hint:.5,.5
+        height:950
+    
+
+<PageLayoutView>:
+    MainWindow:
+    BLayouts:
+
+
+       

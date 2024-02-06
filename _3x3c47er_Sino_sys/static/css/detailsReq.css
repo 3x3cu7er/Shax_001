@@ -1,0 +1,322 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  width: 100vw;
+  overflow: hidden;
+}
+.heading h1 {
+  width: 100%;
+  height: 15vh;
+  text-align: center;
+  margin-bottom: 8%;
+  font-size: 5rem;
+  margin-top: -2%;
+  color: white;
+  text-shadow: 0 0 5px black, 0 0 2rem aqua, 0 0 25px aqua;
+}
+label {
+  font-size: 1.4rem;
+  margin-left: 5%;
+}
+input[type="text"],
+input[type="date"],
+input[type="email"] {
+  width: 80%;
+  height: 4rem;
+  margin: 2% 0 1rem 15%;
+  padding-left: 2rem;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+}
+form input[type="submit"] {
+  width: 15%;
+  height: 4rem;
+  margin: 2% 0 1rem 6%;
+  padding-left: 0.5rem;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.fill {
+  width: 80%;
+  height: 90%;
+  margin-top: 1%;
+  margin-left: 5%;
+  color: white;
+  z-index: 10;
+}
+main {
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  background: linear-gradient(to right, silver, rgba(72, 129, 129, 0.592));
+}
+
+.transparency {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(3, 14, 50), rgba(0, 0, 0));
+  backdrop-filter: blur(5rem);
+  z-index: 2;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.entity {
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  text-align: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5%;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+.c1,
+.c2 {
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  border-radius: 2rem;
+}
+.c1 {
+  background: linear-gradient(
+    to right,
+    rgba(188, 187, 190, 0.4),
+    rgba(33, 27, 27, 0.3)
+  );
+  top: -10%;
+  left: 70%;
+  animation: top 1s linear infinite;
+  transition: 2s ease-in-out;
+  -webkit-transition: 2s ease-in-out;
+  -moz-transition: 2s ease-in-out;
+  -ms-transition: 2s ease-in-out;
+  -o-transition: 2s ease-in-out;
+}
+
+.c2 {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4),
+    rgba(0, 0, 0, 0.3)
+  );
+  top: 40%;
+  right: 70%;
+  animation: down 1s linear infinite;
+}
+@keyframes top {
+  0% {
+    left: 10%;
+  }
+  45% {
+    transform: rotateZ(35deg);
+    -webkit-transform: rotateZ(35deg);
+    -moz-transform: rotateZ(35deg);
+    -ms-transform: rotateZ(35deg);
+    -o-transform: rotateZ(35deg);
+  }
+  60% {
+    transform: rotateZ(80deg);
+    -webkit-transform: rotateZ(80deg);
+    -moz-transform: rotateZ(80deg);
+    -ms-transform: rotateZ(80deg);
+    -o-transform: rotateZ(80deg);
+  }
+}
+
+@keyframes down {
+  0% {
+    right: 10%;
+  }
+  45% {
+    transform: rotateZ(35deg);
+    -webkit-transform: rotateZ(35deg);
+    -moz-transform: rotateZ(35deg);
+    -ms-transform: rotateZ(35deg);
+    -o-transform: rotateZ(35deg);
+  }
+  60% {
+    transform: rotateZ(80deg);
+    -webkit-transform: rotateZ(80deg);
+    -moz-transform: rotateZ(80deg);
+    -ms-transform: rotateZ(80deg);
+    -o-transform: rotateZ(80deg);
+  }
+}
+.log a {
+  color: white;
+  font-style: italic;
+}
+.image img {
+  width: 80%;
+  height: 70%;
+  margin-top: 3%;
+}
+
+.detailsInfo {
+  text-align: center;
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  top: -10%;
+}
+#pass {
+  font-size: 3rem;
+  font-weight: 100;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.detailsInfo hr {
+  width: 70%;
+  margin-left: 15%;
+}
+.detailsInfo h4 {
+  font-size: 1.2rem;
+  margin: 2% 0 2% 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.components {
+  width: 98%;
+  height: 120vh;
+  margin: 5% 0 3% 1%;
+  overflow: auto;
+  padding: 1% 0 0 6vh;
+  align-items: center;
+}
+
+.components .parent {
+  width: 50%;
+  height: 40vh;
+  background: linear-gradient(
+    to left,
+    rgb(73, 70, 70, 0.98),
+    rgba(0, 0, 0, 0.99)
+  );
+  margin: 3% 0 6% 6%;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+}
+.parent .child:hover {
+  transform: translateY(10%);
+  -webkit-transform: translateY(10%);
+  -moz-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  -o-transform: translateY(10%);
+  transition: 0.5s ease-in-out;
+}
+.parent .child {
+  width: 60%;
+  height: 15vh;
+  background: white;
+  position: relative;
+  left: 70%;
+  top: 75%;
+  box-shadow: 2px 5px 2rem black;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  padding: 6% 0 1% 2%;
+  font-size: 1.45rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#message {
+  height: 50%;
+  width: 30%;
+  display: none;
+  margin-left: 5%;
+  color: white;
+  border-radius: 50px;
+  background: linear-gradient(to right, rgba(3, 14, 50), rgba(0, 0, 0));
+  position: absolute;
+  border-radius: 0;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+#message {
+  top: 55%;
+}
+.fill h1 {
+  font-size: 6rem;
+  z-index: 10;
+}
+#message input[type="text"],
+#message input[type="email"] {
+  width: 80%;
+  height: 3rem;
+  margin: 2% 0 1rem 5%;
+  padding-left: 2rem;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+}
+
+#message input[type="submit"] {
+  width: 15%;
+  height: 3rem;
+  margin: 2% 0 1rem 5.4%;
+  padding-left: 0.5rem;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.req-close {
+  position: relative;
+  left: 39%;
+  width: 6%;
+  top: 3%;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+
+a:hover {
+  cursor: pointer;
+}

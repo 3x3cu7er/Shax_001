@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>...</title>
+    <link rel="stylesheet" href="{% static '/css/update.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- navigation system -->
+      <div class="nav">
+        <div class="logo">Academic Performance-dashboard</div>
+        <div class="links">
+          <a href="{% url 'xmain'%}">Home</a>
+          <a href="{% url 'temp_access_student'%}">Records</a>
+          <a href="" class="under">Update</a>
+          <a href="{% url 'xlanding'%}">main</a>
+        </div>
+      </div>
+      <div class="elements">
+        <a href="{% url 'xmain'%}" class="under">Home</a>
+        <a href="{% url 'temp_access_student'%}">Records</a>
+        <a href="{% url 'xupdate'%}">Update</a>
+        <a href="#later">Alerts</a>
+      </div>
+      <!-- platforms -->
+      <div class="platforms">
+        <h2>Only academic<span>Updates </span> be made here.</h2>
+        <div class="design">
+          <img src="/static/update2.svg" alt="" />
+        </div>
+        <div class="section">
+          <div class="formContainer">
+            <h3>Update stored credentials.</h3>
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="formItem">
+                <label for="">Update ID:</label>
+                <input
+                  type="text"
+                  name="refId"
+                  placeholder="record reference I D ."
+                />
+              </div>
+              <div class="formItem">
+                <label for="">Course:</label>
+                <input
+                  type="text"
+                  name="course"
+                  placeholder="course of study."
+                />
+              </div>
+              <!-- <div class="formItem">
+                <label for="">Level:</label>
+                <input type="text" name="level" placeholder="Y e a r.." />
+              </div>
+              <div class="formItem">
+                <label for="">Semester:</label>
+                <input type="text" name="sem" placeholder="Semester.." />
+              </div> -->
+              <div class="formItem">
+                <label for="">Cumulative Weighted Average (cwa):</label>
+                <input type="text" name="cwa" placeholder="cwa.." />
+              </div>
+              <div class="formItem">
+                <input type="submit" value="Update" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

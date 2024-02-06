@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+    <link
+      rel="shortcut icon"
+      href="/static/icons/stars.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="alternate"
+      href="/static/icons/admin2.png"
+      type="application/atom+xml"
+      title="Atom"
+    />
+    <link rel="stylesheet" href="{% static '/css/service.css'%}" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="menus">
+        <!-- /* top-nav-bar content */ -->
+
+        <div class="top-nav-bar">
+          <div class="logo">
+            <img src="/static/css/icons/stars.png" alt="logo" />
+            <h4 class="logoname">m454</h4>
+          </div>
+          <div class="links">
+            <a href="{% url 'xactive' %}" class="navigate">About</a>
+            <a href="{% url 'xlanding' %}" class="navigate">@landing</a>
+            <a href="{% url 'xterminal' %}" class="navigate"
+              >Terminal
+              <hr id="active"
+            /></a>
+            <a href="{% url 'dash_content_overview' %}" class="navigate"
+              >Overview</a
+            >
+            <a href="{% url 'sys_manage' %}" class="navigate">Manage</a>
+          </div>
+        </div>
+        <!-- base-elements -->
+        <div class="base">
+          <div class="base-elements">
+            <div class="right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menus">
+        <!-- base-elements -->
+        <div class="base">
+          <div class="base-elements">
+            <div class="right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

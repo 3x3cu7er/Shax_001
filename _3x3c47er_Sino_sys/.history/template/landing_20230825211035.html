@@ -1,0 +1,139 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>...</title>
+    <link rel="stylesheet" href="{% static 'landing2.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="transparency">
+        <div class="c1"></div>
+        <div class="c2"></div>
+        <div class="screen">
+          <div class="heading">
+            <h1><strong>Performance DashBoard..</strong></h1>
+            <h2>
+              Hi, welcome to this <span class="bright">mini-DashBoard</span>
+            </h2>
+          </div>
+          <div class="search">
+            <form action="" method="get">
+              <!-- {% csrf_token %} -->
+              <input
+                type="text"
+                placeholder="Validate credentials with ID.."
+                name="search"
+                id="search"
+              />
+              <input type="submit" value="Check" name="searchBtn" id="btn" />
+            </form>
+          </div>
+          <div class="fieldset1">
+            <div class="field">
+              <a href="{% url 'main'%}">
+                <div class="logo">
+                  <img src="/static/dashboard.svg" alt="" />
+                </div>
+                <div class="page">
+                  <h4>Dashboard.</h4>
+                </div>
+              </a>
+            </div>
+
+            <div class="field">
+              <a href="{% url 'monitor'%}">
+                <div class="logo">
+                  <img src="/static/repo.svg" alt="" />
+                </div>
+                <div class="page">
+                  <h4>Monitoring.</h4>
+                </div>
+              </a>
+            </div>
+            <div class="field">
+              <a href="{% url 'platform'%}">
+                <div class="logo">
+                  <img src="/static/chat.svg" alt="" />
+                </div>
+                <div class="page">
+                  <h4>platform.</h4>
+                </div>
+              </a>
+            </div>
+            <div class="field">
+              <a class="settings">
+                <div class="logo">
+                  <img src="/static/events.svg" alt="" />
+                </div>
+                <div class="page">
+                  <h4>Create a comment.</h4>
+                </div>
+              </a>
+            </div>
+
+            <div id="settings">
+              <img src="/static/x.svg" class="close" alt="" />
+              <div class="form">
+                <h4>Generate commment.</h4>
+                <hr />
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <div class="formItem">
+                    <label for="">Content ID :</label>
+                    <input type="text" name="comID" placeholder="I D.." />
+                  </div>
+                  <div class="formItem">
+                    <label for="">Label:</label>
+                    <input
+                      type="text"
+                      name="label"
+                      placeholder="give label.."
+                    />
+                  </div>
+                  <div class="formItem">
+                    <label for="">Main content :</label>
+                    <textarea
+                      name="message"
+                      placeholder="Write to add to content."
+                      id="writings"
+                    ></textarea>
+                  </div>
+                  <div class="formItem">
+                    <input type="submit" value="Add content" />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="logoImage">
+        <div class="content">
+          <div class="logo">
+            <img src="/static/spy.svg" alt="" />
+          </div>
+          <div class="detailsInfo">
+            <h4>
+              Hello, dear user. Access all your perfomance datails from this
+              interface.
+            </h4>
+            <hr />
+
+            <h3 id="pass">Username : <span>{{uname}}</span></h3>
+            <hr />
+            <h3 id="pass2">Address : {{addr}}</h3>
+            <hr />
+
+            <div class="security">
+              <label for="" id="refNum">Rreference number: {{refnum}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'set.js'%}"></script>
+  </body>
+</html>

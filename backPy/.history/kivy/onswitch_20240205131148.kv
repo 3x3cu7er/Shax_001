@@ -1,0 +1,24 @@
+<MainWindow>:
+    GridLayout:
+        cols:1
+        size:1000,700
+        width:"100dp"
+        background:"#00ffce"
+        Label:
+            text:"Switch "
+            font_size:30
+            color:"#00ffce"
+        BoxLayout:
+            spacing:50
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size:600,400
+            Switch:
+                width:"100dp"
+                on_active:root.active(self)
+            Slider:
+                min:0
+                max:100
+                on_value:root.varr(self)
+                value:50
+            Label:
+                text:root.state

@@ -1,0 +1,135 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/home.css'%}" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="transparency">
+        <div class="c1"></div>
+
+        <div class="screen">
+          <div class="image">
+            <img src="/static/course1.svg" alt="" />
+          </div>
+          <div class="welcome">
+            <h1>Performance & records</h1>
+            <h2>Keeping</h2>
+            <h3>Academic dashboard.</h3>
+            <h1>`S i n o` board</h1>
+            <h1>User ID :{{uID}}</h1>
+          </div>
+          <div class="accounts">
+            <!-- accountCreating -->
+            <div class="formContainer" id="register">
+              <h2>SignUp for an account.</h2>
+              <form action="" method="post">
+                {% csrf_token%}
+                <div class="formItem">
+                  <label for="">Academic year :</label>
+                  <input
+                    type="text"
+                    name="level"
+                    placeholder="year of study ."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Reference Number :</label>
+                  <input type="text" name="ref" placeholder="Reference ID ." />
+                </div>
+                <div class="formItem">
+                  <label for="">USER ID :</label>
+                  <input type="text" name="uid" placeholder="UID ." />
+                </div>
+                <div class="formItem">
+                  <label for="">Username :</label>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="username | handle ."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Address :</label>
+                  <input
+                    type="email"
+                    name="addrs"
+                    placeholder="email address.."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Password :</label>
+                  <input
+                    type="password"
+                    name="pass1"
+                    placeholder="password.."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Password (confirm) :</label>
+                  <input
+                    type="password"
+                    name="pass2"
+                    placeholder="password.."
+                  />
+                </div>
+                <div class="formItem">
+                  <input type="submit" value="SignUp" />
+                </div>
+                <div class="formItem" id="blank">
+                  <h4>
+                    Already have an account ?
+                    <a class="sign" id="link1">SignIn</a>.
+                  </h4>
+                </div>
+              </form>
+            </div>
+            <div id="signIn">
+              <form action="" method="get" class="formContainer2">
+                {% csrf_token%}
+                <div class="formItem">
+                  <label for="">Username :</label>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="username | handle ."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Address :</label>
+                  <input
+                    type="email"
+                    name="addrs"
+                    placeholder="email address.."
+                  />
+                </div>
+                <div class="formItem">
+                  <label for="">Password :</label>
+                  <input
+                    type="password"
+                    name="pass1"
+                    placeholder="password.."
+                  />
+                </div>
+                <div class="formItem">
+                  <input type="submit" value="SignIn" />
+                </div>
+                <div class="formItem">
+                  <h4>
+                    have no account ? <a class="sign" id="link2">SignUp</a>.
+                  </h4>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="{% static 'sign.js'%}"></script>
+  </body>
+</html>
